@@ -129,6 +129,7 @@ function createCard(movie, i){
     // card.appendChild(del);
     
     let notes = document.createElement('ul');
+    notes.textContent = 'NOTES:';
     card.appendChild(notes);
 
     for (let j = 0; j < movie.notes.length; j++) {
@@ -163,6 +164,7 @@ function removeNote(movie, index){
 function addNote(movie, input) {
     let cardContainer = document.getElementById('card-container')
     cardContainer.innerHTML = "";
+
     let note = input.value;
     movie.notes.push(note);
 
