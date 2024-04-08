@@ -123,17 +123,22 @@ function createCard(movie, i){
     add.addEventListener('click', ()=> addNote(movie, noteInput));
     card.appendChild(add);
 
-    let del = document.createElement('button');
-    del.textContent = 'delete last note';
-    del.addEventListener('click', ()=> removeNote(movie));
-    card.appendChild(del);
+    // let del = document.createElement('button');
+    // del.textContent = 'delete last note';
+    // del.addEventListener('click', ()=> removeNote(movie));
+    // card.appendChild(del);
     
     let notes = document.createElement('ul');
     card.appendChild(notes);
 
     for (let j = 0; j < movie.notes.length; j++) {
-        let note = document.createElement('li')
-        note.textContent = movie.notes[j]
+        let note = document.createElement('li');
+        note.textContent = movie.notes[j];
+        let remove = document.createElement("button");
+        remove.textContent = 'Delete';
+        remove.addEventListener('click', () => removeNote(movie, j));
+        note.appendChild(remove);
+
         notes.appendChild(note);
     }
 
@@ -148,13 +153,11 @@ function quoteAlert() {
     alert('I didnt "jazz" this up as much as I wanted to originally because it was taking longer than I\'d like but it was going to be a theater theme with movie poster displays as cards.');
 }
 
-function removeNote(movie){
-    let cardContainer = document.getElementById('card-container');
-    cardContainer.innerHTML = '';
-    console.log(movie)
-    movie.notes.pop();
+function removeNote(movie, index){
+    let cardContainer = document.getElementById('card-container')
+    cardContainer.innerHTML= ""
+    movie.notes.splice(index, 1);
     showCards();
-
 }
 
 function addNote(movie, input) {
