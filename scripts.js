@@ -1,83 +1,143 @@
-/**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- * 
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your 
- *    browser and make sure you can see that change. 
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- * 
- */
 
 
-const FRESH_PRINCE_URL = "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
-
-// This is an array of strings (TV show titles)
-let titles = [
-    "Fresh Prince of Bel Air",
-    "Curb Your Enthusiasm",
-    "East Los High"
-];
-// Your final submission should have much more data than this, and 
-// you should use more than just an array of strings to store it all.
-
+//top-movies array
+const titles = [{
+    "title": "The Shawshank Redemption",
+    "image": "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "rating": "9.3",
+    "year": 1994,
+    notes: []
+},
+{
+    "title": "The Godfather",
+    "image": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UY562_CR8,0,380,562_.jpg",
+    "rating": "9.2",
+    "year": 1972,
+    notes: []
+},
+{
+    "title": "The Dark Knight",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "rating": "9.0",
+    "year": 2008,
+    notes: []
+},
+{
+    "title": "The Godfather Part II",
+    "image": "https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UY562_CR7,0,380,562_.jpg",
+    "rating": "9.0",
+    "year": 1974,
+    notes: []
+},
+{
+    "title": "12 Angry Men",
+    "image": "https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_QL75_UX380_CR0,11,380,562_.jpg",
+    "rating": "9.0",
+    "year": 1957,
+    notes: []
+},
+{
+    "title": "Schindler's List",
+    "image": "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "rating": "9.0",
+    "year": 1993,
+    notes: []
+},
+{
+    "title": "The Lord of the Rings: The Return of the King",
+    "image": "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "rating": "9.0",
+    "year": 2003,
+    notes: []
+},
+{
+    "title": "Pulp Fiction",
+    "image": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UY562_CR3,0,380,562_.jpg",
+    "rating": "8.9",
+    "year": 1994,
+    notes: []
+},
+{
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "image": "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    "rating": "8.8",
+    "year": 2001,
+    notes: []
+},
+{
+    "title": "The Good, the Bad and the Ugly",
+    "image": "https://m.media-amazon.com/images/M/MV5BNjJlYmNkZGItM2NhYy00MjlmLTk5NmQtNjg1NmM2ODU4OTMwXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "rating": "8.8",
+    "year": 1966,
+    notes: []
+}]
 
 // This function adds cards the page to display the data in the array
 function showCards() {
-    const cardContainer = document.getElementById("card-container");
-    cardContainer.innerHTML = "";
-    const templateCard = document.querySelector(".card");
-    
+ 
     for (let i = 0; i < titles.length; i++) {
-        let title = titles[i];
-
-        // This part of the code doesn't scale very well! After you add your
-        // own data, you'll need to do something totally different here.
-        let imageURL = "";
-        if (i == 0) {
-            imageURL = FRESH_PRINCE_URL;
-        } else if (i == 1) {
-            imageURL = CURB_POSTER_URL;
-        } else if (i == 2) {
-            imageURL = EAST_LOS_HIGH_POSTER_URL;
-        }
-
-        const nextCard = templateCard.cloneNode(true); // Copy the template card
-        editCardContent(nextCard, title, imageURL); // Edit title and image
-        cardContainer.appendChild(nextCard); // Add new card to the container
+        createCard(titles[i], i);
+        console.log(titles.title)
     }
 }
+function createCard(movie, i){
+    let card = document.createElement('div');
+    card.classList.add('card');
 
-function editCardContent(card, newTitle, newImageURL) {
-    card.style.display = "block";
+    let cardContainer = document.getElementById("card-container");
 
-    const cardHeader = card.querySelector("h2");
-    cardHeader.textContent = newTitle;
+    let rank = document.createElement('p');
+    rank.textContent = i + 1;
+    rank.id = 'rank';
+    card.appendChild(rank);
+    
+    let year = document.createElement('p');
+    year.textContent = movie.year;
+    year.id = 'year';
+    card.appendChild(year);
 
-    const cardImage = card.querySelector("img");
-    cardImage.src = newImageURL;
-    cardImage.alt = newTitle + " Poster";
+    let rating = document.createElement('p');
+    rating.textContent = movie.rating;
+    rating.id = 'rating';
+    card.appendChild(rating);
 
-    // You can use console.log to help you debug!
-    // View the output by right clicking on your website,
-    // select "Inspect", then click on the "Console" tab
-    console.log("new card:", newTitle, "- html: ", card);
+    let title = document.createElement('h2');
+    title.textContent = movie.title;
+    card.appendChild(title);
+    title.id = 'title';
+
+    let image = document.createElement('img');
+    image.src = movie.image;
+    image.alt = movie.image + " Poster";
+    card.appendChild(image);
+
+    
+    let noteInput = document.createElement('input');
+    noteInput.type = 'text';
+    noteInput.placeholder = 'note to add';
+    noteInput.id = 'input';
+    card.appendChild(noteInput)
+    
+    let add = document.createElement('button');
+    add.textContent = "add note";
+    add.addEventListener('click', ()=> addNote(movie, noteInput));
+    card.appendChild(add);
+
+    let del = document.createElement('button');
+    del.textContent = 'delete last note';
+    del.addEventListener('click', ()=> removeNote(movie));
+    card.appendChild(del);
+    
+    let notes = document.createElement('ul');
+    card.appendChild(notes);
+
+    for (let j = 0; j < movie.notes.length; j++) {
+        let note = document.createElement('li')
+        note.textContent = movie.notes[j]
+        notes.appendChild(note);
+    }
+
+    cardContainer.appendChild(card);
 }
 
 // This calls the addCards() function when the page is first loaded
@@ -85,10 +145,23 @@ document.addEventListener("DOMContentLoaded", showCards);
 
 function quoteAlert() {
     console.log("Button Clicked!")
-    alert("I guess I can kiss heaven goodbye, because it got to be a sin to look this good!");
+    alert('I didnt "jazz" this up as much as I wanted to originally because it was taking longer than I\'d like but it was going to be a theater theme with movie poster displays as cards.');
 }
 
-function removeLastCard() {
-    titles.pop(); // Remove last item in titles array
-    showCards(); // Call showCards again to refresh
+function removeNote(movie){
+    let cardContainer = document.getElementById('card-container');
+    cardContainer.innerHTML = '';
+    console.log(movie)
+    movie.notes.pop();
+    showCards();
+
+}
+
+function addNote(movie, input) {
+    let cardContainer = document.getElementById('card-container')
+    cardContainer.innerHTML = "";
+    let note = input.value;
+    movie.notes.push(note);
+
+    showCards();
 }
